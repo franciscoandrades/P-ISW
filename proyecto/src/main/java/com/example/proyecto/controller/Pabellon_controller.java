@@ -67,7 +67,7 @@ public class Pabellon_controller {
         if(pabellon3.isPresent() == true){
             Pabellon pabellon4 = pabellon3.get();
             pabellon4.setEstado("Disponible");
-            pabellon4.setId_paciente(0);
+            pabellon4.setpaciente(0);
             return pab_service.SaveOrUpdatePabellon(pabellon4);
         }
         else{
