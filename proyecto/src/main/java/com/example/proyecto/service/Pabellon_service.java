@@ -19,6 +19,10 @@ public class Pabellon_service {
         return pab_repository.save(pabellon);
     }
 
+    public Pabellon deletePabellon(long id) {
+        return pab_repository.deleteByid(id);
+    }
+
     public Iterable <Pabellon> listAll(){
         return pab_repository.findAll();
     }

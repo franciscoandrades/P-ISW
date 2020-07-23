@@ -28,6 +28,11 @@ public class Pabellon_controller {
         return pab_service.listAll();
     }
 
+    @DeleteMapping("/id")
+    public long delete_pabellon (@RequestParam(name = "id") long id){
+        return pab_service.deleteByid(id);
+    }
+
     @GetMapping("/estado")
     public Iterable<Pabellon> obtenerPabellon(@RequestParam(name = "estado") String estado) {
         return pab_service.obtenerporEstado(estado);
