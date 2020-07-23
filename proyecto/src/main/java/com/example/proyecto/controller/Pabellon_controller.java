@@ -45,7 +45,7 @@ public class Pabellon_controller {
 
     @PutMapping("/asignar")
     public ResponseEntity<Pabellon> asignar (@RequestParam (name = "id") long id, @RequestParam (name = "paciente") long paciente){
-        Pabellon pabellon2;
+        Pabellon pabellon2 = null;
         pabellon2.pabellon(id,"Ocupado",paciente);
         //pabellon2.setpaciente(paciente);
         //pabellon2.setId(id);
