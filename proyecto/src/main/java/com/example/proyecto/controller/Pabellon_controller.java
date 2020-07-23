@@ -44,9 +44,13 @@ public class Pabellon_controller {
     }
 
     @PutMapping("/asignar")
-    public ResponseEntity<Pabellon> asignar (@RequestBody Pabellon pabellon){
-        Pabellon pabellon2 = pabellon;
-        Optional <Pabellon> pabellon3 = pab_service.obtenerporId(pabellon2.getId());
+    public ResponseEntity<Pabellon> asignar (@RequestParam (name = "id") long id, @RequestParam (name = "paciente") long paciente){
+        Pabellon pabellon2;
+        pabellon2.setpaciente(paciente);
+        pabellon2.setId(id);
+        pabellon2.setEstado("Ocupado");
+        
+        Optional <Pabellon> pabellon3 = pab_service.obtenerporId(id);
         if(pabellon3.isPresent() == true){
             Pabellon pabellon4 = pabellon3.get();
             if(pabellon4.getEstado().equals("Ocupado")){
@@ -54,9 +58,9 @@ public class Pabellon_controller {
             }
         }
         else{
-            return new ResponseEntity<Pabellon>(pabellon,HttpStatus.CONFLICT);
+            return new ResponseEntity<Pabellon>(pabellon2,HttpStatus.CONFLICT);
         }
-        pabellon2.setEstado("Ocupado");
+
         Pabellon pab = pab_service.SaveOrUpdatePabellon(pabellon2);
         return new ResponseEntity<Pabellon>(pab,HttpStatus.CREATED);
     }
