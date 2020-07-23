@@ -30,7 +30,7 @@ public class Pabellon_controller {
 
     @DeleteMapping("/id")
     public long delete_pabellon (@RequestParam(name = "id") long id){
-        return pab_service.deleteByid(id);
+        return pab_service.deletePabellon(id);
     }
 
     @GetMapping("/estado")
