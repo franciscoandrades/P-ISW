@@ -19,7 +19,7 @@ public class Pabellon_service {
         return pab_repository.save(pabellon);
     }
 
-    public Pabellon deletePabellon(long id) {
+    public long deletePabellon(long id) {
         return pab_repository.deleteByid(id);
     }
 
