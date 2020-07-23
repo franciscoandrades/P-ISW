@@ -13,12 +13,12 @@ public class Pabellon{
     private long id = 0;
 
     private String estado = null;
-    private long id_paciente = 0;
+    private long paciente = 0;
     
-    public void pabellon(long id, String estado, long id_paciente) {
+    public void pabellon(long id, String estado, long paciente) {
         this.id = id;
         this.estado = estado;
-        this.id_paciente = id_paciente;
+        this.paciente = paciente;
     }
 
     public long getId(){
@@ -37,12 +37,12 @@ public class Pabellon{
         this.estado = estado;
     }
 
-    public long getId_paciente(){
-        return id_paciente;
+    public long getpaciente(){
+        return paciente;
     }
     
-    public void setId_paciente(long Id_paciente){
-        this.id_paciente = Id_paciente;
+    public void setpaciente(long paciente){
+        this.paciente = paciente;
     }
 
 }

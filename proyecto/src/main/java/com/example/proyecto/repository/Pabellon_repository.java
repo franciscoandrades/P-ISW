@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface Pabellon_repository extends CrudRepository<Pabellon,Long> {
     Iterable <Pabellon> findAllByestado(String estado);
     Pabellon deleteById(long id);
-    Pabellon findById_paciente(long id_paciente); 
+    Pabellon findBypaciente(long paciente); 
 }
