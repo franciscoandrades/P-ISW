@@ -34,5 +34,9 @@ public class Pabellon_service {
     public Optional<Pabellon> obtenerporId(final long id) {
         return pab_repository.findById((long) id);
     }
+    
+    public Optional<Pabellon> obtenerporpaciente(final long id) {
+        return pab_repository.findByPacientePabellon((long) id);
+    }
 
 }

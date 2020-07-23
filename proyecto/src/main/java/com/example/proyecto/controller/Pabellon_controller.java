@@ -74,4 +74,9 @@ public class Pabellon_controller {
             return null;
         }
     }
+
+    @GetMapping("/paciente")
+    public Optional<Pabellon> obtenerPabellonPaciente(@RequestParam(name = "id_paciente") long id) {
+        return pab_service.obtenerporpaciente(id);
+    }
 }
