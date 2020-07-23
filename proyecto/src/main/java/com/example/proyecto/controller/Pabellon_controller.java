@@ -27,9 +27,9 @@ public class Pabellon_controller {
     public Iterable<Pabellon> getPabellones (){
         return pab_service.listAll();
     }
-
+    
     @DeleteMapping("/id")
-    public long delete_pabellon (@RequestParam(name = "id") long id){
+    public Pabellon delete_pabellon (@RequestParam(name = "id") long id){
         return pab_service.deletePabellon(id);
     }
 

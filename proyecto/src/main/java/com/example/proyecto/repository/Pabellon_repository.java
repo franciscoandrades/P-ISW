@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Pabellon_repository extends CrudRepository<Pabellon,Long> {
     Iterable <Pabellon> findAllByestado(String estado);
-    Long deleteByid(long id);
+    Pabellon deleteById(long id);
 }
