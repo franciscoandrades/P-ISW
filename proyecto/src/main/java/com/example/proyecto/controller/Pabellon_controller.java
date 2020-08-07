@@ -46,15 +46,17 @@ public class Pabellon_controller {
     @PutMapping("/asignar")
     public ResponseEntity<Pabellon> asignar (@RequestParam (name = "id") long id, @RequestParam (name = "paciente") long paciente){
         Pabellon pabellon2 = new Pabellon();
-        pabellon2.pabellon(id,"Ocupado",paciente);
+        
         Optional <Pabellon> pabellon3 = pab_service.obtenerporId(id);
         if(pabellon3.isPresent() == true){
             Pabellon pabellon4 = pabellon3.get();
+            pabellon2.pabellon(id,"Ocupado",paciente,pabellon4.capacidad,pabellon4.disponible);
             if(pabellon4.getEstado().equals("Ocupado")){
                 return new ResponseEntity<Pabellon>(pabellon4,HttpStatus.CONFLICT);
             }
         }
         else{
+            pabellon2.pabellon(id,"Ocupado",paciente,-1,-1);
             return new ResponseEntity<Pabellon>(pabellon2,HttpStatus.CONFLICT);
         }
 
@@ -79,5 +81,20 @@ public class Pabellon_controller {
     @GetMapping("/paciente")
     public Pabellon obtenerPabellonPaciente(@RequestParam(name = "paciente") long paciente) {
         return pab_service.obtenerporpaciente(paciente);
+    }
+
+    @PutMapping("/capacidad")
+    public ResponseEntity<Pabellon> actualizar_capacidad (@RequestParam (name = "id") long id){
+        Pabellon pabellon3 = pab_service.obtenerporId(id).get();
+        pabellon3.capacidad = pabellon3.capacidad -1;
+        Pabellon pab = pab_service.SaveOrUpdatePabellon(pabellon3);
+        return new ResponseEntity<Pabellon>(pab,HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/capacidad")
+    public int get_capacidad (@RequestParam (name = "id") long id){
+        Pabellon pabellon3 = pab_service.obtenerporId(id).get();
+        return pabellon3.capacidad();
     }
 }

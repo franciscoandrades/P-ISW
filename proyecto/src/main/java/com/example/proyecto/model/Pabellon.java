@@ -14,11 +14,15 @@ public class Pabellon{
 
     private String estado = null;
     private long paciente = 0;
+    public int capacidad = 5;
+    public int disponible = 5;
     
-    public void pabellon(long id, String estado, long paciente) {
+    public void pabellon(long id, String estado, long paciente, int capacidad,int disponible) {
         this.id = id;
         this.estado = estado;
         this.paciente = paciente;
+        this.capacidad = capacidad;
+        this.disponible = disponible;
     }
 
     public long getId(){
