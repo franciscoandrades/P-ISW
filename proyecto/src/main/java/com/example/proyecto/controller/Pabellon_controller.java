@@ -84,7 +84,7 @@ public class Pabellon_controller {
     }
 
     @PutMapping("/disponible")
-    public ResponseEntity<Pabellon> actualizar_capacidad (@RequestParam (name = "id") long id){
+    public ResponseEntity<Pabellon> actualizar_disponible (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
         if (pabellon3.disponible == 0){return new ResponseEntity<Pabellon>(pabellon3,HttpStatus.CONFLICT);}
         pabellon3.disponible = pabellon3.disponible -1;
@@ -94,8 +94,24 @@ public class Pabellon_controller {
 
 
     @GetMapping("/disponible")
-    public int get_capacidad (@RequestParam (name = "id") long id){
+    public int get_disponible (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
         return pabellon3.disponible;
     }
+
+
+    @GetMapping("/capacidad")
+    public int get_capacidad (@RequestParam (name = "id") long id){
+        Pabellon pabellon3 = pab_service.obtenerporId(id).get();
+        return pabellon3.capacidad;
+    }
+
+    @PutMapping("/capacidad")
+    public ResponseEntity<Pabellon> actualizar_capacidad (@RequestParam (name = "id") long id){
+        Pabellon pabellon3 = pab_service.obtenerporId(id).get();
+        pabellon3.disponible = 5;
+        Pabellon pab = pab_service.SaveOrUpdatePabellon(pabellon3);
+        return new ResponseEntity<Pabellon>(pab,HttpStatus.CREATED);
+    }
+
 }
