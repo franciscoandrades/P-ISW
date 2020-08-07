@@ -83,18 +83,18 @@ public class Pabellon_controller {
         return pab_service.obtenerporpaciente(paciente);
     }
 
-    @PutMapping("/capacidad")
+    @PutMapping("/disponible")
     public ResponseEntity<Pabellon> actualizar_capacidad (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
-        pabellon3.capacidad = pabellon3.capacidad -1;
+        pabellon3.disponible = pabellon3.disponible -1;
         Pabellon pab = pab_service.SaveOrUpdatePabellon(pabellon3);
         return new ResponseEntity<Pabellon>(pab,HttpStatus.CREATED);
     }
 
 
-    @GetMapping("/capacidad")
+    @GetMapping("/disponible")
     public int get_capacidad (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
-        return pabellon3.capacidad;
+        return pabellon3.disponible;
     }
 }
