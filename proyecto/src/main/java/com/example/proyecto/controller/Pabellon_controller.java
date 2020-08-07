@@ -86,6 +86,7 @@ public class Pabellon_controller {
     @PutMapping("/disponible")
     public ResponseEntity<Pabellon> actualizar_capacidad (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
+        if (pabellon3.disponible == 0){return new ResponseEntity<Pabellon>(pab,HttpStatus.CONFLICT);}
         pabellon3.disponible = pabellon3.disponible -1;
         Pabellon pab = pab_service.SaveOrUpdatePabellon(pabellon3);
         return new ResponseEntity<Pabellon>(pab,HttpStatus.CREATED);
