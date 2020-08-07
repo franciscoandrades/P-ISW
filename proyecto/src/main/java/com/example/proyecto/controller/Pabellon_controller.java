@@ -95,6 +95,6 @@ public class Pabellon_controller {
     @GetMapping("/capacidad")
     public int get_capacidad (@RequestParam (name = "id") long id){
         Pabellon pabellon3 = pab_service.obtenerporId(id).get();
-        return pabellon3.capacidad();
+        return pabellon3.capacidad;
     }
 }
